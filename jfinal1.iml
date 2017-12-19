@@ -13,5 +13,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Maven: com.jfinal:jfinal:3.3" level="project" />
     <orderEntry type="library" name="Maven: cglib:cglib-nodep:3.2.5" level="project" />
+    <orderEntry type="library" name="Maven: com.jfinal:jfinal-java8:3.3" level="project" />
   </component>
 </module>
