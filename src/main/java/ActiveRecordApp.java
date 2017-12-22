@@ -1,6 +1,17 @@
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
+import com.jfinal.plugin.activerecord.Db;
+import com.jfinal.plugin.activerecord.IAtom;
+import com.jfinal.plugin.activerecord.Record;
 import com.jfinal.plugin.druid.DruidPlugin;
+import com.sun.xml.internal.messaging.saaj.packaging.mime.util.LineInputStream;
 import model.User;
+
+import java.sql.SQLException;
+import java.time.Clock;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.ZoneId;
+import java.util.List;
 
 /**
  * 中巴价值投资研习社
@@ -10,13 +21,25 @@ import model.User;
  */
 public class ActiveRecordApp {
     public static void main(String[] args) {
-        DruidPlugin dp = new DruidPlugin("mysql://localhost:3307/depot", "root", "User@123");
+        final String mysqlUrl = "jdbc:mysql://localhost:3306/homestead?useSSL=false";
+        DruidPlugin dp = new DruidPlugin(mysqlUrl, "root", null);
         ActiveRecordPlugin arp = new ActiveRecordPlugin(dp);
-        arp.addMapping("t_user", User.class);
+        arp.addMapping("users", User.class);
         dp.start();
         arp.start();
 
-        User user = new User().dao().findById(1029);
-        System.out.println(user);
+        boolean succeed = Db.tx(new IAtom() {
+            @Override
+            public boolean run() throws SQLException {
+                User user = new User();
+                user.set("name", "tang22")
+                        .set("password", "p2")
+                        .set("email", "shmp2020@163.com")
+                        .save();
+                return true;
+            }
+        });
+
+
     }
 }
