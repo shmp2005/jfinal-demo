@@ -22,7 +22,6 @@ public class ActiveRecordApp {
         arp.start();
 
         boolean succeed = Db.tx(new IAtom() {
-            @Override
             public boolean run() throws SQLException {
                 User user = new User();
                 user.set("name", "tang22")
