@@ -1,22 +1,15 @@
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.IAtom;
-import com.jfinal.plugin.activerecord.Record;
 import com.jfinal.plugin.druid.DruidPlugin;
-import com.sun.xml.internal.messaging.saaj.packaging.mime.util.LineInputStream;
 import model.User;
 
 import java.sql.SQLException;
-import java.time.Clock;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.ZoneId;
-import java.util.List;
 
 /**
  * 中巴价值投资研习社
  *
- * @ author: tangjianhua
+ * @ author: tang jian hua
  * @ date: 2017/12/21.
  */
 public class ActiveRecordApp {
